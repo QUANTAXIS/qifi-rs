@@ -1,0 +1,16 @@
+[package]
+name = "qifi-rs"
+version = "0.1.0"
+authors = ["somewheve <somewheve@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+bson = "0.14.0"
+serde_json = "*"
+serde_derive = "1.0"
+serde = { version = "1.0", features = ["derive"] } # 序列化
+#mimalloc = { version = "0.1.17", default-features = false } # 性能优化
+
+
+[profile.release]
+lto = "fat"
