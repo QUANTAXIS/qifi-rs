@@ -5,7 +5,7 @@ use std::collections::HashMap;
 
 
 // 注意当前设置的数据大小 是否可能会出现溢出情况  这需要我们进行考虑
-#[allow(dead_code,non_snake_case)]
+#[allow(dead_code, non_snake_case)]
 #[derive(Serialize, Clone, Deserialize, Debug)]
 pub struct Account {
     user_id: String,
@@ -166,4 +166,3 @@ pub struct QIFI {
     trades: HashMap<String, Trade>,
     transfers: HashMap<String, Transfer>,
 }
-
