@@ -16,24 +16,52 @@ pub struct DataItem {
 #[allow(dead_code)]
 #[derive(Serialize, Clone, Deserialize, Debug)]
 pub struct Bar {
+    #[serde(default = 0f64)]
     high: f64,
+    #[serde(default = 0f64)]
     low: f64,
+    #[serde(default = 0f64)]
     close: f64,
+    #[serde(default = 0f64)]
     open: f64,
+    #[serde(default = 0i64)]
     volume: i64,
-    amount: i64,
+    #[serde(default = 0f64)]
+    amount: f64,
 }
 
+/// Tick格式的数据
+///     price: 最新价
+///     open_interest: 持仓量
+///     high: 高
+///     low: 低
+///     close: 收
+///     open: 开
+///     volume: 成交量
+///     amount: 成交金额
+/// Examples
+/// ```
+///
+/// ```
 #[allow(dead_code)]
 #[derive(Serialize, Clone, Deserialize, Debug)]
 pub struct Tick {
+    #[serde(default = 0f64)]
     price: f64,
+    #[serde(default = 0i128)]
+    open_interest: i128,
+    #[serde(default = 0f64)]
     high: f64,
+    #[serde(default = 0f64)]
     low: f64,
+    #[serde(default = 0f64)]
     close: f64,
+    #[serde(default = 0f64)]
     open: f64,
+    #[serde(default = 0i64)]
     volume: i64,
-    amount: i64,
+    #[serde(default = 0f64)]
+    amount: f64,
 }
 
 

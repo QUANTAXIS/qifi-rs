@@ -11,5 +11,6 @@ qifi-rs =  0.0.1
 
 在各个结构体上我们描述了好用的API来让你进行初始化数据并进行计算
 ```rust
-use qifi_rs::
+use qifi_rs::from_string;
+// 等待补充 
 ```
