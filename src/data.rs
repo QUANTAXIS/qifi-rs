@@ -1,31 +1,8 @@
 /*
 此处描述了quantaxis-rs标准的期货/股票/数据结构
 */
-use serde::{Serialize, Deserialize};
-
-fn default_f64() -> f64 {
-    0f64
-}
-
-fn default_i64() -> i64 {
-    0i64
-}
-
-fn default_bool() -> bool {
-    false
-}
-
-fn default_i128() -> i128 {
-    0i128
-}
-
-fn default_i32() -> i32 {
-    0i32
-}
-
-fn default_string() -> String {
-    "".to_string()
-}
+use serde::{Deserialize, Serialize};
+use crate::default::{default_bool,default_f64,default_i32,default_i64, default_i128, default_string};
 
 #[allow(dead_code)]
 #[derive(Serialize, Clone, Deserialize, Debug)]

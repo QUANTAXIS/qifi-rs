@@ -1,8 +1,10 @@
 #![allow(dead_code)]
 
-use serde::{Serialize, Deserialize};
+use serde::{Deserialize, Serialize};
+
 use std::collections::HashMap;
 
+use crate::default::{default_string, default_i32};
 
 // 注意当前设置的数据大小 是否可能会出现溢出情况  这需要我们进行考虑
 #[allow(dead_code, non_snake_case)]
@@ -49,12 +51,12 @@ pub struct Order {
     instrument_id: String,
     direction: String,
     offset: String,
-    volume_orign: String,
+    volume_orign: i32,
     price_type: String,
     limit_price: f32,
     time_condition: String,
     volume_condition: String,
-    insert_date_time: i128,
+    insert_date_time: i64,
     exchange_order_id: String,
     status: String,
     volume_left: i32,
@@ -119,50 +121,59 @@ pub struct Trade {
     offset: String,
     volume: i32,
     price: f64,
-    trade_date_time: i128,
+    trade_date_time: i64,
     commission: f32,
 }
 
 #[allow(dead_code)]
 #[derive(Serialize, Clone, Deserialize, Debug)]
 pub struct Transfer {
-    datetime: i128,
+    datetime: i64,
     currency: String,
     amount: f64,
     error_id: i16,
     error_msg: String,
 }
 
+/// QIFI账户数据结构
+/// Examples
+/// ```
+///
+/// ```
 #[allow(dead_code)]
 #[derive(Serialize, Clone, Deserialize, Debug)]
 pub struct QIFI {
-    databaseip: String,
-    account_cookie: String,
-    password: String,
-    portfolio: String,
-    broker_name: String,
-    capital_password: String,
-    bank_password: String,
-    bankid: String,
-    investor_name: String,
-    money: f64,
-    pub_host: String,
-    settlement: HashMap<String, String>,
+    #[serde(default = "default_string")]
+    pub databaseip: String,
+    pub account_cookie: String,
+    pub password: String,
+    pub portfolio: String,
+    pub broker_name: String,
+    pub capital_password: String,
+    pub bank_password: String,
+    pub bankid: String,
+    pub investor_name: String,
+    pub money: f64,
+    pub pub_host: String,
+    pub settlement: HashMap<String, String>,
     // 是一个字典是否考虑反序列化
-    taskid: String,
-    // 是否是一个列表 需要转换为[]
-    trade_host: String,
-    updatetime: String,
-    wsuri: String,
-    bankname: String,
-    trading_day: String,
-    status: u16,
-    accounts: Account,
+    // #[serde(default="default_i32")]
+    pub taskid: String,
+    pub trade_host: String,
+    pub updatetime: String,
+    pub wsuri: String,
+    pub bankname: String,
+    pub trading_day: String,
+    pub status: i16,
+    pub accounts: Account,
     // 注意下面都是不确定的
-    banks: HashMap<String, BankDetail>,
-    events: HashMap<String, String>,
-    orders: HashMap<String, Order>,
-    positions: HashMap<String, Position>,
-    trades: HashMap<String, Trade>,
-    transfers: HashMap<String, Transfer>,
+    pub banks: HashMap<String, BankDetail>,
+    #[serde(default = "Default::default")]
+    pub event: HashMap<String, String>,
+    pub orders: HashMap<String, Order>,
+    pub positions: HashMap<String, Position>,
+    pub trades: HashMap<String, Trade>,
+    pub transfers: HashMap<String, Transfer>,
+    #[serde(default = "default_i32")]
+    pub ping_gap: i32
 }
