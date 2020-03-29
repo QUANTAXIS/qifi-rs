@@ -45,7 +45,7 @@ pub fn from_serde_value<T>(value: Value) -> Result<T, Error>
 /// let _deserialize = serde_json::to_string(&qifi).expect("呀 反序列化失败,请检查你的字符串格式");
 ///```
 pub fn from_string(data: String) -> Option<Value> {
-    let solve = data.replace("null", "\"default\"");
+    let solve = data.replace("null", "\"qifi_default\"");
     // println!("{:#?}", solve);
     match serde_json::from_str(&solve) {
         Ok(_t) => _t,
@@ -67,7 +67,7 @@ pub fn from_string(data: String) -> Option<Value> {
 /// let _deserialize = serde_json::to_string(&qifi).expect("呀 反序列化失败,请检查你的字符串格式");
 /// ```
 pub fn from_str(data: &str) -> Option<Value> {
-    let solve = data.replace("null", "\"default\"");
+    let solve = data.replace("null", "\"qifi_default\"");
     match serde_json::from_str(&solve) {
         Ok(_t) => _t,
         Err(_e) => None,
