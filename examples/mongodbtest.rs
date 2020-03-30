@@ -10,7 +10,7 @@ extern crate serde;
 extern crate serde_json;
 
 fn main() {
-    let client = Client::with_uri_str("mongodb://127.0.0.1:27017").expect("Failed to initialize standalone client.");
+    let client = Client::with_uri_str("mongodb://192.168.2.118:27017").expect("Failed to initialize standalone client.");
     let coll = client.database("QAREALTIME").collection("account");
     let cursor = coll.find(None, None).ok().expect("Failed to execute find.");
     // 将读取出来的数据载入为json字符串

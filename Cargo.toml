@@ -1,7 +1,7 @@
 [package]
 name = "qifi-rs"
-version = "0.1.0"
-authors = ["somewheve <somewheve@gmail.com>"]
+version = "0.2.0"
+authors = ["somewheve <somewheve@gmail.com>", "yutiansut <yutian@quantaxis.com.cn>"]
 edition = "2018"
 description = "A fast Api and Structure load"
 
