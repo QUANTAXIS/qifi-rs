@@ -120,7 +120,7 @@ struct Scode {
 ///     marketname: 市场名称
 ///     code:
 #[derive(Serialize, Deserialize, Debug)]
-struct L2X {
+pub(crate) struct L2X {
     #[serde(default = "default_i32")]
     pub index: i32,
     #[serde(default = " default_string")]
