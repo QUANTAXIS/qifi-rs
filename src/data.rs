@@ -8,15 +8,15 @@ use crate::default::{default_bool,default_f64,default_i32,default_i64, default_i
 #[derive(Serialize, Clone, Deserialize, Debug)]
 pub struct DataItem {
     #[serde(default = "default_f64")]
-    open: f64,
+    pub open: f64,
     #[serde(default = "default_f64")]
-    high: f64,
+    pub high: f64,
     #[serde(default = "default_f64")]
-    low: f64,
+    pub  low: f64,
     #[serde(default = "default_f64")]
-    close: f64,
+    pub close: f64,
     #[serde(default = "default_i64")]
-    volume: i64,
+    pub volume: i64,
 }
 
 /// Bar格式的数据
@@ -47,17 +47,17 @@ pub struct DataItem {
 #[derive(Serialize, Clone, Deserialize, Debug)]
 pub struct Bar {
     #[serde(default = "default_f64")]
-    high: f64,
+    pub high: f64,
     #[serde(default = "default_f64")]
-    low: f64,
+    pub low: f64,
     #[serde(default = "default_f64")]
-    close: f64,
+    pub close: f64,
     #[serde(default = "default_f64")]
-    open: f64,
+    pub open: f64,
     #[serde(default = "default_i64")]
-    volume: i64,
+    pub volume: i64,
     #[serde(default = "default_f64")]
-    amount: f64,
+    pub amount: f64,
 }
 
 /// Tick格式的数据
@@ -77,21 +77,21 @@ pub struct Bar {
 #[derive(Serialize, Clone, Deserialize, Debug)]
 pub struct Tick {
     #[serde(default = "default_f64")]
-    price: f64,
+    pub price: f64,
     #[serde(default = "default_i128")]
-    open_interest: i128,
+    pub open_interest: i128,
     #[serde(default = "default_f64")]
-    high: f64,
+    pub high: f64,
     #[serde(default = "default_f64")]
-    low: f64,
+    pub low: f64,
     #[serde(default = "default_f64")]
-    close: f64,
+    pub close: f64,
     #[serde(default = "default_f64")]
-    open: f64,
+    pub open: f64,
     #[serde(default = "default_i64")]
-    volume: i64,
+    pub volume: i64,
     #[serde(default = "default_f64")]
-    amount: f64,
+    pub amount: f64,
 }
 
 /// 获取当前code的代码以及限制数量
@@ -100,9 +100,9 @@ pub struct Tick {
 ///     limit: 限制数量
 #[derive(Serialize, Deserialize, Debug, Clone)]
 struct Scode {
-    code: String,
-    ip: String,
-    limit: i32,
+    pub code: String,
+    pub ip: String,
+    pub limit: i32,
 }
 
 /// L2行情数据， 注意我为此都添加大量的接口
@@ -122,29 +122,29 @@ struct Scode {
 #[derive(Serialize, Deserialize, Debug)]
 struct L2X {
     #[serde(default = "default_i32")]
-    index: i32,
+    pub index: i32,
     #[serde(default = " default_string")]
-    time: String,
+    pub time: String,
     #[serde(default = "default_f64")]
-    price: f64,
+    pub price: f64,
     #[serde(default = "default_bool")]
-    isbuy: bool,
+    pub isbuy: bool,
     #[serde(default = "default_i32")]
-    vol: i32,
+    pub vol: i32,
     #[serde(default = "default_i32")]
-    buyno: i32,
+    pub  buyno: i32,
     #[serde(default = "default_i32")]
-    sellno: i32,
+    pub sellno: i32,
     #[serde(default = "default_f64")]
-    buyprice: f64,
+    pub buyprice: f64,
     #[serde(default = "default_f64")]
-    sellprice: f64,
+    pub sellprice: f64,
     #[serde(default = "default_i32")]
-    buyvol: i32,
+    pub buyvol: i32,
     #[serde(default = "default_i32")]
-    sellvol: i32,
+    pub sellvol: i32,
     #[serde(default = " default_string")]
-    marketname: String,
+    pub marketname: String,
     #[serde(default = " default_string")]
-    code: String,
+    pub code: String,
 }
