@@ -2,7 +2,7 @@
 
 use serde::{Deserialize, Serialize};
 
-use std::collections::HashMap;
+use std::collections::{HashMap, BTreeMap};
 
 use crate::default::{default_string, default_i32};
 
@@ -170,10 +170,10 @@ pub struct QIFI {
     pub banks: HashMap<String, BankDetail>,
     #[serde(default = "Default::default")]
     pub event: HashMap<String, String>,
-    pub orders: HashMap<String, Order>,
+    pub orders: BTreeMap<String, Order>,
     pub positions: HashMap<String, Position>,
-    pub trades: HashMap<String, Trade>,
-    pub transfers: HashMap<String, Transfer>,
+    pub trades: BTreeMap<String, Trade>,
+    pub transfers: BTreeMap<String, Transfer>,
     #[serde(default = "default_i32")]
     pub ping_gap: i32
 }
