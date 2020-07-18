@@ -17,8 +17,8 @@ pub struct Account {
     pub withdraw: f64,
     pub WithdrawQuota: f64,
     pub close_profit: f64,
-    pub commission: f32,
-    pub premium: f32,
+    pub commission: f64,
+    pub premium: f64,
     pub static_balance: f64,
     pub position_profit: f64,
     pub float_profit: f64,
@@ -131,7 +131,7 @@ pub struct Transfer {
     pub datetime: i64,
     pub currency: String,
     pub amount: f64,
-    pub error_id: i16,
+    pub error_id: i32,
     pub error_msg: String,
 }
 
@@ -164,7 +164,7 @@ pub struct QIFI {
     pub wsuri: String,
     pub bankname: String,
     pub trading_day: String,
-    pub status: i16,
+    pub status: i32,
     pub accounts: Account,
     // 注意下面都是不确定的
     pub banks: HashMap<String, BankDetail>,
