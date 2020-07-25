@@ -6,11 +6,11 @@ edition = "2018"
 description = "A fast Api and Structure load"
 
 [dependencies]
-bson = "*"
+bson = "0.13.0"
 serde_json = "*"
 serde_derive = "1.0"
 serde = { version = "1.0", features = ["derive"] } # 序列化
-mongodb = "*"
+mongodb = "0.3.12"
 serde_bytes = "0.10"
 
 [profile.release]
