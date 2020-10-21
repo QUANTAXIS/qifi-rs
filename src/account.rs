@@ -175,5 +175,6 @@ pub struct QIFI {
     pub trades: BTreeMap<String, Trade>,
     pub transfers: BTreeMap<String, Transfer>,
     #[serde(default = "default_i32")]
-    pub ping_gap: i32
+    pub ping_gap: i32,
+    pub eventmq_ip: String,
 }
