@@ -1,5 +1,5 @@
 use bson::Bson;
-use mongodb::Client;
+use mongodb::sync::Client;
 use bson::Document;
 
 use qifi_rs::{from_string, QIFI, from_serde_value, to_doc};
@@ -10,7 +10,7 @@ extern crate serde;
 extern crate serde_json;
 
 fn main() {
-    let client = Client::with_uri_str("mongodb://192.168.2.118:27017").expect("Failed to initialize standalone client.");
+    let client = Client::with_uri_str("mongodb://192.168.2.117:27017").unwrap();//("Failed to initialize standalone client.");
     let coll = client.database("QAREALTIME").collection("account");
     let cursor = coll.find(None, None).ok().expect("Failed to execute find.");
     // 将读取出来的数据载入为json字符串
@@ -24,5 +24,7 @@ fn main() {
     let c: QIFI = from_serde_value(x).unwrap();
     // 转换为document
     let v = to_doc(c);
-    coll.insert_one(v, None);
+    println!("{:#?}", v);
+    
+    //coll.insert_one(v, None);
 }
