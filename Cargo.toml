@@ -1,11 +1,27 @@
 [package]
 name = "qifi-rs"
 version = "0.3.0"
+
 authors = ["somewheve <somewheve@gmail.com>", "yutiansut <yutian@quantaxis.com.cn>"]
 edition = "2021"
+
 description = "A fast Api and Structure load"
+readme = "README.md"
+keywords = ["actix", "http", "web", "framework", "async"]
+homepage = "https://github.com/yutiansut"
+repository = "https://github.com/yutiansut/qifi-rs"
+documentation = "https://docs.rs/qifi-rs/"
+categories = ["science", "algorithms"]
+license = "MIT OR Apache-2.0"
+
+include = [
+    "src/**/*",
+    "Cargo.toml",
+    "README.md"
+]
 
 [dependencies]
+
 bson = "2.14.0"
 serde_json = "*"
 serde_derive = "1.0.219"
@@ -13,12 +29,16 @@ serde = { version = "1.0.219", features = ["derive"] } # 序列化
 mongodb = "3.2.3"
 serde_bytes = "0.11.17"
 
+
 [profile.release]
 lto = "fat"
 
-
-[[example]]
+[dependencies.mongodb]
+version = "1.1.0"
+default-features = false
+features = ["sync"]
+[[examples]]
 name = "mongodbtest"
 
-[[example]]
+[[examples]]
 name = "single_test"
