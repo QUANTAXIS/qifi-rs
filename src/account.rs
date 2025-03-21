@@ -135,6 +135,54 @@ pub struct Transfer {
     pub error_msg: String,
 }
 
+#[allow(dead_code)]
+#[derive(Serialize, Clone, Deserialize, Debug, Default)]
+pub struct ExecutionParameters {
+    pub slices: i32,
+    pub interval: i32,
+    pub current_slice: i32,
+    pub next_slice_time: String,
+}
+
+#[allow(dead_code)]
+#[derive(Serialize, Clone, Deserialize, Debug, Default)]
+pub struct ExecutionMetrics {
+    pub market_impact: f64,
+    pub slippage: f64,
+    pub arrival_price: f64,
+    pub vwap: f64,
+}
+
+#[allow(dead_code)]
+#[derive(Serialize, Clone, Deserialize, Debug, Default)]
+pub struct Execution {
+    pub exec_id: String,
+    pub account_cookie: String,
+    pub strategy_id: String,
+    pub instrument_id: String,
+    pub exchange_id: String,
+    pub direction: String,
+    pub offset: String,
+    pub volume_total: f64,
+    pub volume_filled: f64,
+    pub price_limit: f64,
+    pub create_time: String,
+    pub start_time: String,
+    #[serde(default)]
+    pub end_time: Option<String>,
+    pub status: String,
+    pub algorithm: String,
+    pub parameters: ExecutionParameters,
+    pub order_ids: Vec<String>,
+    pub avg_price: f64,
+    pub commission: f64,
+    pub progress: f64,
+    pub last_update_time: String,
+    pub is_paused: bool,
+    pub is_cancelling: bool,
+    pub metrics: ExecutionMetrics,
+}
+
 /// QIFI账户数据结构
 /// Examples
 /// ```
@@ -174,6 +222,8 @@ pub struct QIFI {
     pub positions: HashMap<String, Position>,
     pub trades: BTreeMap<String, Trade>,
     pub transfers: BTreeMap<String, Transfer>,
+    #[serde(default = "Default::default")]
+    pub executions: BTreeMap<String, Execution>,
     #[serde(default = "default_i32")]
     pub ping_gap: i32,
     pub eventmq_ip: String,
